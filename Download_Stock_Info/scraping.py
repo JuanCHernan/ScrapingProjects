@@ -25,7 +25,7 @@ def extract_companies():
 
 def extract_information(link):
     info = {}
-    data = requests.get(links[0], 'html.parser')
+    data = requests.get(link, 'html.parser')
     bs = BeautifulSoup(data.content, 'html.parser')
     table = bs.find_all('div', {'class': 'flex justify-between border-b py-2 desktop:py-0.5'})
     for i, t in enumerate(table):
@@ -36,4 +36,5 @@ def extract_information(link):
     return info
 
 companies, links = extract_companies()
-print(extract_information(links[0]))
+info = extract_information(links[2])
+print(info)
